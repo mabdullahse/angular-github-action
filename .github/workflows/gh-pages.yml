@@ -29,11 +29,11 @@ jobs:
     - name: Duplicate index.html as 404.html
       run: cp docs/browser/index.html docs/404.html 
 
-    - name: Deploy
-      if: success()
-      uses: peaceiris/actions-gh-pages@v3
+ 
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@4.1.4
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: docs/browser/angular-github-action
-        enable_jekyll: true
+        branch: gh-pages  # The branch the action should deploy to.
+        folder: docs/browser/angular-github-action  # Replace <project-name> with the name of your Angular project
+        token: ${{ secrets.GITHUB_TOKEN }}  # GitHub automatically cr
 
