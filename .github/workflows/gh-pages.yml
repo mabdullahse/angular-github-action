@@ -26,10 +26,14 @@ jobs:
     - name: Build
       run: npm run build:prod
 
+    - name: Duplicate index.html as 404.html
+      run: cp docs/browser/index.html docs/404.html 
+
     - name: Deploy
       if: success()
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: dist/angular-github-action
+        publish_dir: docs/browser/angular-github-action
         enable_jekyll: true
+
